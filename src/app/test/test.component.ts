@@ -7,9 +7,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TestComponent implements OnInit {
 
-  constructor() { }
+  currentTab: string;
+  comments = null;
+
+  constructor() {
+    this.currentTab = '1';
+   }
 
   ngOnInit() {
+    this.comments = ['Super', 'Bonjour', 'LOL'];
   }
 
+  setTab(tab: string, $event = null): void {
+    this.currentTab = tab;
+  }
 }
