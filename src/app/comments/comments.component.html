@@ -1,1 +1,20 @@
-<p>comments works!</p>
+<div *ngIf="commentsService.comments; then comments else loading"></div>
+<ng-template #comments>
+  <dl *ngFor="let comment of commentsService.comments">
+    <img src="{{ comment.picture }}" alt="">
+    <dt>
+      <strong>{{ comment.name }}<br> {{ comment.age }} years old, {{ comment.gender}}<br>
+{{ comment.company }}
+      </strong>
+    </dt>
+    <dd>
+        {{ comment.about }}
+    </dd>
+  </dl>
+  <!-- <p >
+
+  </p> -->
+</ng-template>
+<ng-template #loading>Loading …</ng-template>
+
+

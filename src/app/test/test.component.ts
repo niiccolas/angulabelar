@@ -15,7 +15,6 @@ export class TestComponent implements OnInit {
    }
 
   ngOnInit() {
-    this.comments = ['Super', 'Bonjour', 'LOL'];
   }
 
   setTab(tab: string, $event = null): void {
