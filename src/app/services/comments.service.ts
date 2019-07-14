@@ -8,6 +8,8 @@ import { HttpClient } from '@angular/common/http';
 export class CommentsService {
 
   comments = null;
+  error    = null;
+  loading  = true;
 
   constructor(private http: HttpClient) {
     http.get('/assets/comments.json').subscribe((data) => {
