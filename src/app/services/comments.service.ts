@@ -13,6 +13,13 @@ export class CommentsService {
     http.get('/assets/comments.json').subscribe((data) => {
       console.log(data);
       this.comments = data;
-    });
+    },
+    (error) => {
+      console.log(error);
+      this.error = error.statusText;
+    }),
+    () => {
+      this.loading = false;
+    };
   }
 }
