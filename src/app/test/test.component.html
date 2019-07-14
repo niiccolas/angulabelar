@@ -1,7 +1,7 @@
 <div class="tabs-head">
-  <div (click)="setTab('1', $event)">Bouton 1</div>
-  <div (click)="setTab('2')">Bouton 2</div>
-  <div (click)="setTab('3')">Bouton 3</div>
+  <div class="btn" (click)="setTab('1', $event)">Bouton 1</div>
+  <div class="btn" (click)="setTab('2')">Bouton 2</div>
+  <div class="btn" (click)="setTab('3')">Bouton 3</div>
 </div>
 <div *ngIf="currentTab === '1'" class="tab-content">
   Contenu 1
