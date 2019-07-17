@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
+import { finalize, delay } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -14,11 +15,17 @@ export class CommentsService {
   books    = null;
 
   constructor(private http: HttpClient) {
-    http.get('/assets/comments.json').subscribe((data) => {
+    http.get('/assets/comments.json')
+    .pipe(
+      delay(1000), // forces an artifical delay before displaying data
+      finalize(() => {
+        this.loading = false;
+      })
+    )
+    .subscribe((data) => {
       console.log(data);
       this.comments = data;
-    },
-    (error) => {
+    }, (error) => {
       console.log(error);
       this.error = error.statusText;
     }),
@@ -26,7 +33,7 @@ export class CommentsService {
       this.loading = false;
     };
 
-    let bookParams = new HttpParams().set('q', 'Victor+Hugo');
+    let bookParams = new HttpParams().set('q', 'johnny+halliday');
 
     http.get('https://www.googleapis.com/books/v1/volumes', { params: bookParams }).subscribe((data) => {
       console.log('-------HELLO FROM GBOOKS REQUEST---------');
