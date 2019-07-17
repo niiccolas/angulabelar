@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { CommentsService } from './services/comments.service';
+import { Comments } from './classes/comments';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.sass']
 })
 export class AppComponent {
-  title = 'angulabelar';
+  title = 'Bookseller';
+
+  constructor(private _commentsService: CommentsService) {
+  }
+
+  lstcomments: Comments[];
+
+  ngOnInit(): void {
+
+  }
 }
